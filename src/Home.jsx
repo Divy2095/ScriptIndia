@@ -9,7 +9,7 @@ const Home = () => {
         <p className="text-white  ">
           📍 12445 Lake Fraser Dr SE #309, Calgary, AB T2J 7G9, Canada.  📞 (403) 720-6337</p>
 
-        <ul className="flex gap-25 mt-16 pl-90 text-white text-lg font-semibold">
+        <ul className="flex gap-18 mt-16 pl-90 text-white text-lg font-semibold">
           <li>Home</li>
           <li>About Us</li>
           <li>Services</li>

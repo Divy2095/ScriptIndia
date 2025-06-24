@@ -20,7 +20,7 @@ const Login = () => {
         }
       );
       const data = await response.data;
-      if(data.success) {
+      if (data.success) {
         localStorage.setItem("token", response.data.token); // save JWT
         navigate("/home");
       } else {
@@ -71,8 +71,18 @@ const Login = () => {
             >
               Login
             </button>
-            <button className="bg-purple-300 border-2 border-purple-300 rounded-3xl p-2 m-2">
+            <button
+              className="bg-purple-300 border-2 border-purple-300 rounded-3xl p-2 m-2 cursor-pointer"
+              type="submit"
+            >
               Forgot Password?
+            </button>
+            <button
+              className="bg-purple-300 border-2 border-purple-300 rounded-3xl p-2 m-2 cursor-pointer"
+              type="submit"
+              onClick={() => navigate("/signup")}
+            >
+              Don't have account? Sign Up
             </button>
           </form>
         </div>

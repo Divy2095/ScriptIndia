@@ -52,3 +52,45 @@ exports.login = async (req, res) => {
     });
   }
 };
+
+exports.signup = async (req, res) => {
+  try {
+    const { userName, password, email } = req.body;
+
+    if (!userName || !password || !email) {
+      return res.status(400).json({
+        success: false,
+        message: "Please fill all the details.",
+      });
+    }
+
+    const existingUser = await User.findOne({ email });
+    if (existingUser) {
+      return res.status(404).json({
+        success: false,
+        message: "User already exist.",
+      });
+    }
+
+    const user = await User.create({
+      userName,
+      password,
+      email,
+    });
+
+    return res.status(201).json({
+      success: true,
+      message: "User registered successfully!",
+      user: {
+        userName: user.userName,
+        email: user.email,
+      },
+    });
+  } catch (error) {
+    console.error("Login Error:", error);
+    return res.status(500).json({
+      success: false,
+      message: "Signup failure, please try again.",
+    });
+  }
+};
